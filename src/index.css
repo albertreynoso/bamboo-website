@@ -1,0 +1,68 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@layer base {
+  :root {
+    --background: 120 20% 98%;
+    /* Off-white */
+    --foreground: 173 100% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 173 100% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 173 100% 10%;
+
+    /* Primary is rgb(0, 102, 90) => HSL 173 100% 20% */
+    --primary: 173 100% 20%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 173 20% 90%;
+    --secondary-foreground: 173 100% 20%;
+
+    --muted: 173 10% 92%;
+    /* Muted foreground: Increased contrast for WCAG AA (was 40% lightness, now 35%) */
+    --muted-foreground: 173 20% 35%;
+
+    --accent: 173 30% 90%;
+    --accent-foreground: 173 100% 20%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 173 20% 90%;
+    --input: 173 20% 90%;
+    --ring: 173 100% 20%;
+
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 72px;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased focus:outline-none;
+  }
+
+  /* Robust Focus states for Keyboard Navigation */
+  :focus-visible {
+    @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background transition-shadow;
+  }
+
+  section {
+    /* No longer need scroll-margin-top if using scroll-padding-top on html */
+  }
+}
+
+/* Custom Utilities for Waves & Organic shapes */
+.organic-shape {
+  border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+}

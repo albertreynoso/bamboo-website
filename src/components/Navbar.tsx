@@ -34,6 +34,16 @@ export function Navbar() {
         // Esperamos un poco a que el menú empiece a cerrarse para no interrumpir el thread
         setTimeout(() => {
             const id = href.replace("#", "");
+
+            // Caso especial para Inicio en móvil: ir al tope absoluto (0)
+            if (id === "hero" && window.innerWidth < 768) {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+                return;
+            }
+
             const element = document.getElementById(id);
             if (element) {
                 const isMobile = window.innerWidth < 768;

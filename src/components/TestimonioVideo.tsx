@@ -14,11 +14,8 @@ export function TestimonioVideo() {
                     transition={{ duration: 0.5, ease: "easeOut" }}
                 >
                     <h2 className="text-3xl font-bold tracking-tight text-foreground">
-                        Lo que dice nuestra paciente
+                        Vive la experiencia Bamboo!
                     </h2>
-                    <p className="text-muted-foreground text-sm">
-                        Una experiencia real en Bamboo Studio Dental
-                    </p>
                 </motion.div>
 
                 {/* Video vertical */}

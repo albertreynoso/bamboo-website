@@ -13,7 +13,7 @@ const services = [
     { title: "Revisión General", description: "Chequeo completo de salud bucal y prevención." },
     { title: "Ortodoncia", description: "Alineamos tu sonrisa con las técnicas más modernas y discretas." },
     { title: "Implantes", description: "Recupera la funcionalidad y estética con implantes de alta durabilidad." },
-    { title: "Odontopediatría", description: "Cuidado especializado y divertido para las sonrisas de los más pequeños." },
+    { title: "Endodoncia", description: "Tratamiento de conductos para eliminar el dolor y conservar tu diente natural." },
     { title: "Rehabilitación", description: "Restauración de la función masticatoria." },
     { title: "Estética Dental", description: "Diseño de sonrisa y blanqueamientos para resultados deslumbrantes." },
 ];

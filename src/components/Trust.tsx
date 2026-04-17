@@ -55,8 +55,8 @@ const team = [
     },
     {
         name: "Dra. Valentina Ríos",
-        specialty: "Odontopediatría",
-        description: "Apasionada por crear experiencias positivas y sin miedo para los más pequeños.",
+        specialty: "Endodoncia",
+        description: "Especializada en tratamientos de conducto con técnicas mínimamente invasivas y sin dolor.",
         image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&q=80&w=400&h=400",
     },
     {

@@ -17,7 +17,7 @@ const SERVICIOS = [
     "Revisión General",
     "Ortodoncia",
     "Implantes",
-    "Odontopediatría",
+    "Endodoncia",
     "Rehabilitación",
     "Estética Dental",
 ];

@@ -22,6 +22,14 @@ const SERVICIOS = [
     "Estética Dental",
 ];
 
+const TIME_SLOTS = [
+    "09:00", "09:30", "10:00", "10:30", "11:00", "11:30",
+    "12:00", "12:30", "13:00", "13:30", "14:00", "14:30",
+    "15:00", "15:30", "16:00", "16:30", "17:00", "17:30",
+    "18:00", "18:30", "19:00", "19:30", "20:00", "20:30",
+    "21:00", "21:30", "22:00"
+];
+
 const inputClass =
     "h-12 bg-white w-full rounded-md border border-input px-3 py-2 text-sm " +
     "ring-offset-background placeholder:text-muted-foreground " +
@@ -338,14 +346,20 @@ export function Contact() {
                                         <label htmlFor="hora" className="text-sm font-medium">
                                             Hora <span className="text-red-500">*</span>
                                         </label>
-                                        <input
+                                        <select
                                             id="hora"
-                                            type="time"
                                             className={inputClass}
                                             value={hora}
                                             onChange={e => setHora(e.target.value)}
                                             aria-describedby={attemptedSubmit && !hora ? "hora-error" : undefined}
-                                        />
+                                        >
+                                            <option value="">Seleccione una hora</option>
+                                            {TIME_SLOTS.map(slot => (
+                                                <option key={slot} value={slot}>
+                                                    {slot}
+                                                </option>
+                                            ))}
+                                        </select>
                                         {attemptedSubmit && !hora && (
                                             <p id="hora-error" className="text-[11px] text-red-500 mt-1 ml-1" role="alert">
                                                 * Ingrese la hora de su cita

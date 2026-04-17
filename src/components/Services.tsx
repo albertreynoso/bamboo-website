@@ -77,7 +77,7 @@ function ServiceCard({ title, description, image }: { title: string; description
                 className="mx-4 -mt-6 rounded-2xl overflow-hidden shadow-lg"
                 variants={imageVariants}
             >
-                <img src={image} alt={title} className="w-full h-52 object-cover" />
+                <img src={image} alt={title} className="w-full h-52 object-cover" loading="lazy" />
             </motion.div>
             <div className="p-6 pt-5 text-center">
                 <h3 className="text-xl font-semibold text-foreground mb-2">{title}</h3>

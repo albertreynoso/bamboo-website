@@ -32,6 +32,11 @@ export default defineConfig({
         target: 'http://localhost:3001',
         changeOrigin: true,
       },
+      '/app': {
+        target: 'https://bamboo-appweb.vercel.app',
+        changeOrigin: true,
+        secure: false,
+      },
     },
   },
 })

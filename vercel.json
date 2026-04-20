@@ -1,6 +1,14 @@
 {
   "rewrites": [
     {
+      "source": "/app",
+      "destination": "https://bamboo-appweb.vercel.app/app"
+    },
+    {
+      "source": "/app/(.*)",
+      "destination": "https://bamboo-appweb.vercel.app/app/$1"
+    },
+    {
       "source": "/api/(.*)",
       "destination": "/api/$1"
     },

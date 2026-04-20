@@ -107,10 +107,10 @@ export function Footer() {
                     <h4 className="text-lg font-semibold">Enlaces Rápidos</h4>
                     <nav className="flex flex-col gap-2 opacity-80 text-sm">
                         {[
-                            { href: "#hero", label: "Inicio" },
-                            { href: "#services", label: "Servicios" },
-                            { href: "#trust", label: "Nosotros" },
-                            { href: "#contact", label: "Contacto" }
+                            { href: "#inicio", label: "Inicio" },
+                            { href: "#servicios", label: "Servicios" },
+                            { href: "#nosotros", label: "Nosotros" },
+                            { href: "#contacto", label: "Contacto" }
                         ].map((link, i) => (
                             <motion.a
                                 key={link.href}

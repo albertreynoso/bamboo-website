@@ -43,3 +43,6 @@ Thumbs.db
 .antigravity
 .testsprite
 
+
+.vercel
+.env*.local

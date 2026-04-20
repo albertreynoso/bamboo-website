@@ -14,7 +14,7 @@ export function TestimonioVideo() {
                     transition={{ duration: 0.5, ease: "easeOut" }}
                 >
                     <h2 className="text-3xl font-bold tracking-tight text-foreground">
-                        Vive la experiencia Bamboo!
+                        Hía Rodriguez confia en nosotros! 😊
                     </h2>
                 </motion.div>
 

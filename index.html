@@ -2,7 +2,10 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/favicon.png" sizes="16x16" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+    <link rel="shortcut icon" href="/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- Preconnect to Font domains -->
@@ -43,7 +46,12 @@
           "@context": "https://schema.org",
           "@type": "WebSite",
           "name": "Bamboo Studio Dental",
-          "url": "https://www.bamboostudiodental.com/"
+          "url": "https://www.bamboostudiodental.com/",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://www.bamboostudiodental.com/?s={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
         },
         {
           "@context": "https://schema.org",
@@ -56,9 +64,9 @@
           "priceRange": "$$",
           "address": {
             "@type": "PostalAddress",
-            "streetAddress": "Huancayo, Perú",
+            "streetAddress": "Jr. Julio Cesar Tello 906, 12006",
             "addressLocality": "Huancayo",
-            "postalCode": "12001",
+            "postalCode": "12006",
             "addressCountry": "PE"
           },
           "geo": {
@@ -94,8 +102,66 @@
             "closes": "22:00"
           },
           "sameAs": [
-            "https://www.facebook.com/bamboostudiodental",
-            "https://www.instagram.com/bamboostudiodental"
+            "https://www.facebook.com/studiodentalyestetica/",
+            "https://www.instagram.com/bamboo.studiodental/",
+            "https://www.tiktok.com/@bamboo.studiodental"
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "SiteNavigationElement",
+          "hasPart": [
+            {
+              "@type": "WebPage",
+              "name": "Inicio",
+              "url": "https://www.bamboostudiodental.com/#inicio"
+            },
+            {
+              "@type": "WebPage",
+              "name": "Servicios",
+              "url": "https://www.bamboostudiodental.com/#servicios"
+            },
+            {
+              "@type": "WebPage",
+              "name": "Nosotros",
+              "url": "https://www.bamboostudiodental.com/#nosotros"
+            },
+            {
+              "@type": "WebPage",
+              "name": "Contacto",
+              "url": "https://www.bamboostudiodental.com/#contacto"
+            }
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          "name": "Nuestras Secciones",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Inicio",
+              "url": "https://www.bamboostudiodental.com/#inicio"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Servicios Especializados",
+              "url": "https://www.bamboostudiodental.com/#servicios"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Nuestro Equipo",
+              "url": "https://www.bamboostudiodental.com/#nosotros"
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "name": "Reserva tu Cita",
+              "url": "https://www.bamboostudiodental.com/#contacto"
+            }
           ]
         }
       ]

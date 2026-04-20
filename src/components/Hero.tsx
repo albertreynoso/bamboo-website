@@ -53,7 +53,7 @@ const blobVariants: Variants = {
 
 export function Hero() {
     return (
-        <section id="hero" className="relative bg-background pt-24 pb-32 min-h-[620px] overflow-hidden">
+        <section id="inicio" className="relative bg-background pt-24 pb-32 min-h-[620px] overflow-hidden">
             {/* Imagen de fondo con animación */}
             <motion.img
                 src={imagenMujer}

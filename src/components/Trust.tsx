@@ -152,7 +152,7 @@ export function Trust() {
     );
 
     return (
-        <section id="trust" className="py-24 bg-white relative">
+        <section id="nosotros" className="py-24 bg-white relative">
             <div className="container mx-auto px-6 max-w-6xl">
 
                 {/* ── Sección Equipo ── */}

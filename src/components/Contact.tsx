@@ -1,16 +1,10 @@
 import { useState } from "react";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
-import emailjs from "@emailjs/browser";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { WaveDivider } from "@/components/WaveDivider";
 import { CheckCircle } from "lucide-react";
 
-// ─── Credenciales EmailJS ─────────────────────────────────────────────────────
-// Se recomienda configurar estas variables en el panel de Vercel (https://vercel.com)
-const EJS_SERVICE = import.meta.env.VITE_EMAILJS_SERVICE_ID || "service_40ukfc4";
-const EJS_TEMPLATE = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "template_wa3c5tv";
-const EJS_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "z7j-sCDLwP6lAoeqw";
 // ─────────────────────────────────────────────────────────────────────────────
 
 const SERVICIOS = [
@@ -97,22 +91,42 @@ export function Contact() {
         setError("");
 
         try {
-            await emailjs.send(
-                EJS_SERVICE,
-                EJS_TEMPLATE,
-                {
+            // Llamar a tu API de Vercel (con rate limiting)
+            const response = await fetch("/api/submit-form", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
                     nombre,
                     telefono: `+51 ${telefono}`,
                     servicio,
                     fecha,
                     hora,
-                    motivo
-                },
-                EJS_KEY,
-            );
+                    motivo,
+                }),
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                // Error 429 = límite alcanzado
+                if (response.status === 429) {
+                    setError(data.error || "Límite de 2 solicitudes por día alcanzado. Vuelve mañana.");
+                } else {
+                    setError(data.error || "Hubo un problema al enviar. Por favor intenta de nuevo.");
+                }
+                return;
+            }
+
+            // Éxito
             setSent(true);
-        } catch {
-            setError("Hubo un problema al enviar. Por favor intenta de nuevo.");
+
+            // Opcional: limpiar formulario después de enviar (ya lo haces en el botón "Hacer otra reserva")
+
+        } catch (err) {
+            console.error("Error al enviar:", err);
+            setError("Error de conexión. Verifica tu internet e intenta de nuevo.");
         } finally {
             setLoading(false);
         }
@@ -155,7 +169,7 @@ export function Contact() {
     };
 
     return (
-        <section id="contact" className="py-24 bg-white relative overflow-hidden">
+        <section id="contacto" className="py-24 bg-white relative overflow-hidden">
             {/* Franja sólida encima del wave */}
             <div className="absolute top-0 left-0 w-full h-[200px] bg-[#c7dcd5] z-0 pointer-events-none" />
 

@@ -6,10 +6,10 @@ import logo from "../assets/logo-2.PNG";
 import { getWhatsAppUrl } from "@/lib/whatsapp";
 
 const navLinks = [
-    { label: "Inicio", href: "#hero" },
-    { label: "Servicios", href: "#services" },
-    { label: "Nosotros", href: "#trust" },
-    { label: "Contacto", href: "#contact" },
+    { label: "Inicio", href: "#inicio" },
+    { label: "Servicios", href: "#servicios" },
+    { label: "Nosotros", href: "#nosotros" },
+    { label: "Contacto", href: "#contacto" },
 ];
 
 export function Navbar() {
@@ -36,7 +36,7 @@ export function Navbar() {
             const id = href.replace("#", "");
 
             // Caso especial para Inicio en móvil: ir al tope absoluto (0)
-            if (id === "hero" && window.innerWidth < 768) {
+            if (id === "inicio" && window.innerWidth < 768) {
                 window.scrollTo({
                     top: 0,
                     behavior: "smooth"
@@ -50,12 +50,12 @@ export function Navbar() {
                 let offset = isMobile ? 0 : 72;
 
                 // Servicios y Nosotros entran profundo (-150px)
-                if (isMobile && (id === "services" || id === "trust")) {
+                if (isMobile && (id === "servicios" || id === "nosotros")) {
                     offset = 0;
                 }
 
                 // Contacto va exactamente al inicio (0px)
-                if (isMobile && id === "contact") {
+                if (isMobile && id === "contacto") {
                     offset = 50;
                 }
 

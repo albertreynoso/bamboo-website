@@ -89,7 +89,7 @@ function ServiceCard({ title, description, image }: { title: string; description
 
 export function Services() {
     return (
-        <section id="services" className="relative bg-[#a7c6b6] py-24 overflow-hidden">
+        <section id="servicios" className="relative bg-[#a7c6b6] py-24 overflow-hidden">
             {/* Franja sólida del color del wave */}
             <div className="absolute top-0 left-0 w-full h-[250px] bg-[#c7dcd5] z-10 pointer-events-none" />
 

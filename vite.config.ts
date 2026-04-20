@@ -36,6 +36,7 @@ export default defineConfig({
         target: 'https://bamboo-appweb.vercel.app',
         changeOrigin: true,
         secure: false,
+        rewrite: (path) => path.replace(/^\/app/, ''),
       },
     },
   },

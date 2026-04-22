@@ -14,7 +14,7 @@
     },
     {
       "source": "/(.*)",
-      "destination": "/dist/index.html"
+      "destination": "/index.html"
     }
   ],
   "buildCommand": "npm run build",

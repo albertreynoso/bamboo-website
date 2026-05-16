@@ -31,6 +31,11 @@ export function Navbar() {
     const handleNavClick = (href: string) => {
         setMenuOpen(false);
 
+        if (window.location.pathname !== "/") {
+            window.location.href = "/" + href;
+            return;
+        }
+
         // Esperamos un poco a que el menú empiece a cerrarse para no interrumpir el thread
         setTimeout(() => {
             const id = href.replace("#", "");
@@ -78,14 +83,15 @@ export function Navbar() {
             transition={{ duration: 0.4, ease: "easeOut" }}
         >
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-                <motion.div
+                <motion.a
+                    href="/"
                     className="flex items-center h-18 py-2"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.4 }}
                 >
                     <img src={logo} alt="Bamboo Studio Dental" className="h-full w-auto object-contain scale-100" />
-                </motion.div>
+                </motion.a>
 
                 {/* Nav desktop */}
                 <motion.nav

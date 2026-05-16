@@ -24,6 +24,11 @@ const columnVariants: Variants = {
 
 // Función para scroll suave con offset del navbar
 const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (window.location.pathname !== "/") {
+        // No prevenimos el default para que el navegador siga el enlace a /#href
+        return;
+    }
+
     e.preventDefault();
     const targetId = href.replace("#", "");
     const element = document.getElementById(targetId);

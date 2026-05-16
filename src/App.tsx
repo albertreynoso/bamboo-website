@@ -1,9 +1,10 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useState, useEffect } from "react";
 import { Navbar } from "./components/Navbar";
 import { Hero } from "./components/Hero";
 import { Services } from "./components/Services";
 import { WhatsAppFloat } from "./components/WhatsAppFloat";
 import { Footer } from "./components/Footer";
+import { Privacy } from "./pages/Privacy";
 
 // Lazy-loaded components for better initial performance
 const Trust = lazy(() => import("./components/Trust").then(m => ({ default: m.Trust })));
@@ -15,19 +16,38 @@ function SectionLoading() {
 }
 
 function App() {
+  const [pathname, setPathname] = useState(window.location.pathname);
+
+  useEffect(() => {
+    const handleLocationChange = () => {
+      setPathname(window.location.pathname);
+    };
+
+    window.addEventListener("popstate", handleLocationChange);
+    return () => window.removeEventListener("popstate", handleLocationChange);
+  }, []);
+
+  const isPrivacyPage = pathname.replace(/\/$/, "") === "/privacidad";
+
   return (
     <div className="min-h-screen flex flex-col w-full m-0 pt-[72px]">
       <Navbar />
 
       <main className="flex-1">
-        <Hero />
-        <Services />
+        {isPrivacyPage ? (
+          <Privacy />
+        ) : (
+          <>
+            <Hero />
+            <Services />
 
-        <Suspense fallback={<SectionLoading />}>
-          <Trust />
-          <TestimonioVideo />
-          <Contact />
-        </Suspense>
+            <Suspense fallback={<SectionLoading />}>
+              <Trust />
+              <TestimonioVideo />
+              <Contact />
+            </Suspense>
+          </>
+        )}
       </main>
 
       <Footer />

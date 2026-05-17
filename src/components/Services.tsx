@@ -1,21 +1,21 @@
 import { motion, type Variants } from "framer-motion";
 import { WaveDivider } from "@/components/WaveDivider";
-import servicios1 from "@/assets/servicios-1.png";
-import servicios2 from "@/assets/servicios-2.png";
-import servicios3 from "@/assets/servicios-3.png";
+import servicios6 from "@/assets/servicios-6.1.png";
+import servicios5 from "@/assets/servicios-2.png";
+import servicios2 from "@/assets/servicios-3.png";
 import servicios4 from "@/assets/servicios-4.png";
-import servicios5 from "@/assets/servicios-5.png";
-import servicios6 from "@/assets/servicios-6.png";
+import servicios3 from "@/assets/servicios-5.png";
+import servicios1 from "@/assets/servicios-6.png";
 
 const serviceImages = [servicios1, servicios2, servicios3, servicios4, servicios5, servicios6];
 
 const services = [
-    { title: "Revisión General", description: "Chequeo completo de salud bucal y prevención." },
+    { title: "Estética Dental", description: "Diseño de sonrisa y blanqueamientos para resultados deslumbrantes." },
     { title: "Ortodoncia", description: "Alineamos tu sonrisa con las técnicas más modernas y discretas." },
     { title: "Implantes", description: "Recupera la funcionalidad y estética con implantes de alta durabilidad." },
     { title: "Endodoncia", description: "Tratamiento de conductos para eliminar el dolor y conservar tu diente natural." },
     { title: "Rehabilitación", description: "Restauración de la función masticatoria." },
-    { title: "Estética Dental", description: "Diseño de sonrisa y blanqueamientos para resultados deslumbrantes." },
+    { title: "Revisión General", description: "Chequeo completo de salud bucal y prevención." },
 ];
 
 // Variantes de animación

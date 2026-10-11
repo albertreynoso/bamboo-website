@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { WaveDivider } from "@/components/WaveDivider";
 import { CheckCircle } from "lucide-react";
+import { getWhatsAppUrl } from "@/lib/whatsapp";
 
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -20,8 +21,7 @@ const TIME_SLOTS = [
     "09:00", "09:30", "10:00", "10:30", "11:00", "11:30",
     "12:00", "12:30", "13:00", "13:30", "14:00", "14:30",
     "15:00", "15:30", "16:00", "16:30", "17:00", "17:30",
-    "18:00", "18:30", "19:00", "19:30", "20:00", "20:30",
-    "21:00", "21:30", "22:00"
+    "18:00", "18:30", "19:00", "19:30",
 ];
 
 const inputClass =
@@ -72,12 +72,21 @@ export function Contact() {
     const [fecha, setFecha] = useState("");
     const [hora, setHora] = useState("");
     const [motivo, setMotivo] = useState("");
-    const [loading, setLoading] = useState(false);
     const [sent, setSent] = useState(false);
-    const [error, setError] = useState("");
     const [attemptedSubmit, setAttemptedSubmit] = useState(false);
 
-    const handleSubmit = async (e: React.FormEvent) => {
+    // *texto* = negrita en WhatsApp. Fecha del input viene como AAAA-MM-DD.
+    const buildReservaMessage = () => [
+        "Hola, quisiera reservar una cita:",
+        `*Nombre:* ${nombre}`,
+        `*Teléfono:* +51 ${telefono}`,
+        `*Servicio:* ${servicio}`,
+        `*Fecha:* ${fecha.split("-").reverse().join("/")}`,
+        `*Hora:* ${hora}`,
+        `*Motivo:* ${motivo}`,
+    ].join("\n");
+
+    const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         setAttemptedSubmit(true);
 
@@ -87,49 +96,9 @@ export function Contact() {
             return;
         }
 
-        setLoading(true);
-        setError("");
-
-        try {
-            // Llamar a tu API de Vercel (con rate limiting)
-            const response = await fetch("/api/submit-form", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    nombre,
-                    telefono: `+51 ${telefono}`,
-                    servicio,
-                    fecha,
-                    hora,
-                    motivo,
-                }),
-            });
-
-            const data = await response.json();
-
-            if (!response.ok) {
-                // Error 429 = límite alcanzado
-                if (response.status === 429) {
-                    setError(data.error || "Límite de 2 solicitudes por día alcanzado. Vuelve mañana.");
-                } else {
-                    setError(data.error || "Hubo un problema al enviar. Por favor intenta de nuevo.");
-                }
-                return;
-            }
-
-            // Éxito
-            setSent(true);
-
-            // Opcional: limpiar formulario después de enviar (ya lo haces en el botón "Hacer otra reserva")
-
-        } catch (err) {
-            console.error("Error al enviar:", err);
-            setError("Error de conexión. Verifica tu internet e intenta de nuevo.");
-        } finally {
-            setLoading(false);
-        }
+        // window.open síncrono dentro del submit → no lo bloquea el popup blocker
+        window.open(getWhatsAppUrl(buildReservaMessage()), "_blank", "noopener,noreferrer");
+        setSent(true);
     };
 
     // Handlers de formato y limpieza
@@ -323,7 +292,7 @@ export function Contact() {
                                     </label>
                                     <select
                                         id="servicio"
-                                        className={`${inputClass} cursor-pointer`}
+                                        className={`${inputClass} select-app`}
                                         required
                                         value={servicio}
                                         onChange={e => setServicio(e.target.value)}
@@ -362,12 +331,12 @@ export function Contact() {
                                         </label>
                                         <select
                                             id="hora"
-                                            className={inputClass}
+                                            className={`${inputClass} select-app`}
                                             value={hora}
                                             onChange={e => setHora(e.target.value)}
                                             aria-describedby={attemptedSubmit && !hora ? "hora-error" : undefined}
                                         >
-                                            <option value="">Seleccione una hora</option>
+                                            <option value="" disabled hidden>Seleccione una hora</option>
                                             {TIME_SLOTS.map(slot => (
                                                 <option key={slot} value={slot}>
                                                     {slot}
@@ -402,30 +371,14 @@ export function Contact() {
                                     )}
                                 </motion.div>
 
-                                {/* Error */}
-                                {error && (
-                                    <p className="text-sm text-red-500 text-center">{error}</p>
-                                )}
-
                                 {/* Botón */}
                                 <motion.div variants={buttonVariants}>
                                     <Button
                                         type="submit"
                                         size="lg"
-                                        disabled={loading}
-                                        className="w-full h-14 text-lg rounded-xl shadow-md disabled:opacity-70"
+                                        className="w-full h-14 text-lg rounded-xl shadow-md"
                                     >
-                                        {loading ? (
-                                            <span className="flex items-center gap-2">
-                                                <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24" fill="none">
-                                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z" />
-                                                </svg>
-                                                Enviando...
-                                            </span>
-                                        ) : (
-                                            "Realizar Reserva"
-                                        )}
+                                        Realizar Reserva
                                     </Button>
                                 </motion.div>
                             </motion.form>

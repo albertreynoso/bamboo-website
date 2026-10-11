@@ -5,5 +5,5 @@
 const WHATSAPP_NUMBER = "51944779844";
 const WHATSAPP_TEXT = "Hola, quisiera agendar una cita. ¿Qué horarios tienen disponibles?";
 
-export const getWhatsAppUrl = () =>
-    `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_TEXT)}`;
+export const getWhatsAppUrl = (text = WHATSAPP_TEXT) =>
+    `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;

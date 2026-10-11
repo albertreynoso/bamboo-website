@@ -9,10 +9,6 @@
       "destination": "https://bamboo-appweb.vercel.app/$1"
     },
     {
-      "source": "/api/(.*)",
-      "destination": "/api/$1"
-    },
-    {
       "source": "/(.*)",
       "destination": "/index.html"
     }

@@ -56,19 +56,6 @@ Si aún no tienes tu proyecto en GitHub, sigue estos pasos:
      - **Build Command:** `npm run build`
      - **Output Directory:** `dist`
 
-3. **Variables de Entorno (CRÍTICO):**
-   - Antes de dar clic en "Deploy", despliega la sección **Environment Variables**.
-   - Añade las siguientes 3 variables (copia los valores actuales de tu cuenta de EmailJS):
-
-| Key | Value (Ejemplo) |
-| :--- | :--- |
-| `VITE_EMAILJS_SERVICE_ID` | `service_40ukfc4` |
-| `VITE_EMAILJS_TEMPLATE_ID` | `template_wa3c5tv` |
-| `VITE_EMAILJS_PUBLIC_KEY` | `z7j-sCDLwP6lAoeqw` |
-
-> [!TIP]
-> Si no configuras estas variables, el formulario de contacto no funcionará en producción porque el código ahora las busca de manera segura.
-
 ---
 
 ## 🌐 Paso 2: Configuración de Dominio Personalizado
